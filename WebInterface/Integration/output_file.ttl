@@ -1,0 +1,479 @@
+@prefix lcs: <http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ttab: <http://example.org/ttab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ttab:1 ttab:a_sd "1" ;
+    ttab:ah_veh "0" ;
+    ttab:lane_dec "1" ;
+    ttab:lane_inc "0" ;
+    ttab:ll_edge "0" ;
+    ttab:lt_sd "1" ;
+    ttab:lt_veh "1" ;
+    ttab:message "Do not Steer" ;
+    ttab:rl_edge "1" ;
+    ttab:rt_sd "0" ;
+    ttab:rt_veh "1" .
+
+lcs: a owl:Ontology .
+
+lcs:Ahead_Safety_Distance a lcs:Ahead_Vehicle_and_Ahead_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Ahead_Vehicle a lcs:Ahead_Vehicle_and_Ahead_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Bus a owl:Class ;
+    rdfs:subClassOf lcs:Public_Vehicle ;
+    owl:disjointWith lcs:Taxi .
+
+lcs:Express_way a lcs:Types_of_roads,
+        owl:NamedIndividual ;
+    lcs:hasLanes 6 ;
+    rdfs:comment """Express way is a type of highway that is used more frequently between metropolitan cities. These are highest class of all the highways.
+Generally they have 4-6 lanes for most distances."""^^xsd:string .
+
+lcs:Left_Lane_Edge a lcs:Lane_Edges,
+        lcs:Left_Lane_and_Vehicles,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Left_Safety_Distance a lcs:Left_Vehicle_and_Left_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Left_Vehicle a lcs:Left_Lane_and_Vehicles,
+        lcs:Left_Vehicle_and_Left_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Process1-3-1 a owl:Class ;
+    rdfs:label "LC"^^xsd:string ;
+    rdfs:comment """LC - Lane changing
+This block makes use of motion planning algorithms to decide the path and the target lane for the ego vehicle."""^^xsd:string ;
+    rdfs:subClassOf lcs:Process1-3 ;
+    owl:disjointWith lcs:Process1-3-2 .
+
+lcs:Right_Lane_Edge a lcs:Lane_Edges,
+        lcs:Right_Lane_and_Vehicles,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Right_Safety_Distance a lcs:Right_Vehicle_and_Right_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:Right_Vehicle a lcs:Right_Lane_and_Vehicles,
+        lcs:Right_Vehicle_and_Right_Safety_Distance,
+        owl:NamedIndividual ;
+    lcs:hasTruthValue 1 .
+
+lcs:can_drive a owl:ObjectProperty ;
+    rdfs:domain lcs:License ;
+    rdfs:range lcs:Vehicle_type ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:final_result a owl:Class ;
+    rdfs:label "final_result" ;
+    lcs:inPar "seg_vals,count" ;
+    lcs:moduleName "demo" ;
+    lcs:outPar "msg" ;
+    rdfs:subClassOf lcs:Function_calls .
+
+lcs:hasLanes a owl:DatatypeProperty ;
+    rdfs:domain lcs:Types_of_roads ;
+    rdfs:range xsd:positiveInteger .
+
+lcs:hasTruthValue a owl:DatatypeProperty ;
+    rdfs:domain lcs:Impossible_scenarios ;
+    rdfs:range xsd:integer .
+
+lcs:has_action a owl:ObjectProperty ;
+    rdfs:domain lcs:Vehicle,
+        lcs:route_point ;
+    rdfs:range lcs:action ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_driver a owl:ObjectProperty ;
+    rdfs:domain lcs:Vehicle ;
+    rdfs:range lcs:Driver ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_license a owl:ObjectProperty ;
+    rdfs:domain lcs:Driver ;
+    rdfs:range lcs:License ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_location a owl:ObjectProperty ;
+    rdfs:domain lcs:Vehicle,
+        lcs:route_point,
+        lcs:weather_events ;
+    rdfs:range lcs:location ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_route a owl:ObjectProperty ;
+    rdfs:domain lcs:Vehicle ;
+    rdfs:range lcs:route ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_route_point a owl:ObjectProperty ;
+    rdfs:domain lcs:route ;
+    rdfs:range lcs:route_point ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_vehicle_type a owl:ObjectProperty ;
+    rdfs:domain lcs:Vehicle ;
+    rdfs:range lcs:Vehicle_type ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:has_warning a owl:ObjectProperty ;
+    rdfs:domain lcs:weather_events ;
+    rdfs:range lcs:warning ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:inPar a owl:AnnotationProperty .
+
+lcs:isOnLane a owl:ObjectProperty ;
+    rdfs:domain lcs:Sign ;
+    rdfs:range lcs:Lane ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:isOnRoad a owl:ObjectProperty ;
+    rdfs:domain lcs:Road_segment ;
+    rdfs:range lcs:Road ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:isOnSegment a owl:ObjectProperty ;
+    rdfs:domain lcs:Lane ;
+    rdfs:range lcs:Road_segment ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+lcs:lane_counting a owl:Class ;
+    rdfs:label "lane_counting" ;
+    lcs:inPar "cur_lane,rt_turn,lt_turn" ;
+    lcs:moduleName "query" ;
+    lcs:outPar "cur_lane" ;
+    rdfs:subClassOf lcs:Function_calls .
+
+lcs:m_model a owl:Class ;
+    rdfs:label "m_model" ;
+    lcs:inPar "seg_vals" ;
+    lcs:moduleName "mm" ;
+    lcs:outPar "lane_info,r_depth,l_depth,a_depth" ;
+    rdfs:subClassOf lcs:Function_calls .
+
+lcs:moduleName a owl:AnnotationProperty .
+
+lcs:outPar a owl:AnnotationProperty .
+
+lcs:set_vars a owl:Class ;
+    rdfs:label "set_vars" ;
+    lcs:inPar "lane_info,r_depth,l_depth,a_depth" ;
+    lcs:moduleName "mm" ;
+    lcs:outPar "lt_sd,lt_veh,rt_sd,rt_veh,a_sd,ah_veh" ;
+    rdfs:subClassOf lcs:Function_calls .
+
+lcs:Ambulance a owl:Class ;
+    rdfs:subClassOf lcs:Priority_Vehicle .
+
+lcs:Audible_Line a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Bicycle a owl:Class ;
+    rdfs:subClassOf lcs:Private_Vehicle .
+
+lcs:Bicycle_crossing a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Bicycles_and_pedestrians_only a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Bridge a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Car a owl:Class ;
+    rdfs:subClassOf lcs:Private_Vehicle .
+
+lcs:Closed_to_pedestrian a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Commercial_Vehicle a owl:Class ;
+    rdfs:subClassOf lcs:Vehicle .
+
+lcs:Dividing_Line a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Edge_Line a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Fire_Truck a owl:Class ;
+    rdfs:subClassOf lcs:Priority_Vehicle .
+
+lcs:Gas_Station a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Gragons_Teeth a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Green a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Light .
+
+lcs:Keep_Clear_Pavement a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Kerb_Line a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Motorcycle a owl:Class ;
+    rdfs:subClassOf lcs:Private_Vehicle .
+
+lcs:Municipal_Road a owl:Class ;
+    rdfs:comment "Its a urban road. Usually present in small cities and towns." ;
+    rdfs:subClassOf lcs:Road .
+
+lcs:National_Expressway a owl:Class ;
+    rdfs:comment """Express way is a type of highway that is used more frequently between metropolitan cities. These are highest class of all the highways.
+Generally they have 4-6 lanes for most distances.""" ;
+    rdfs:subClassOf lcs:Road .
+
+lcs:National_Highway a lcs:Types_of_roads,
+        owl:Class,
+        owl:NamedIndividual ;
+    lcs:hasLanes 4 ;
+    rdfs:comment """National highways are long roads that are present throughout the country connecting all the important areas of every state.
+Generally they have 2-4 lanes."""^^xsd:string ;
+    rdfs:subClassOf lcs:Road .
+
+lcs:No_entry a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:No_parking a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:One_way a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Only_designated_directions_per a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Painted_Arrow a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Painted_Island a owl:Class ;
+    rdfs:subClassOf lcs:Road_markings .
+
+lcs:Parking a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Pedestrian_Crossing a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Pedestrians_only a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Police_Car a owl:Class ;
+    rdfs:subClassOf lcs:Priority_Vehicle .
+
+lcs:Process1-1 a owl:Class ;
+    rdfs:label "LT"^^xsd:string ;
+    rdfs:comment """LT - Lane Tracing
+This detects the lanes on the road and traces them on the image for the system to identify the lane boundaries."""^^xsd:string ;
+    rdfs:subClassOf lcs:Process1 .
+
+lcs:Process1-2 a owl:Class ;
+    rdfs:label "PP"^^xsd:string ;
+    rdfs:comment """PP - Predicting Possibilities
+This block reads the environment and predicts the possibilities of the system to perform the action of Lane changing safely."""^^xsd:string ;
+    rdfs:subClassOf lcs:Process1 .
+
+lcs:Process1-3-2 a owl:Class ;
+    rdfs:label "DDS"^^xsd:string ;
+    rdfs:comment """DDS - Deciding the direction to steer
+This is a subsystem of DMS that performs the part function of chossing the direction of steer or the yaw angle."""^^xsd:string ;
+    rdfs:subClassOf lcs:Process1-3 .
+
+lcs:Railway_Crossing a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Red a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Light .
+
+lcs:Road_Intersection a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Road_closed a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Road_closed_to_all_vehicles a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Roundabout a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:School_Nursery a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Slow_down a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Speed_Limit a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:State_Highway a lcs:Types_of_roads,
+        owl:Class,
+        owl:NamedIndividual ;
+    lcs:hasLanes 2 ;
+    rdfs:comment """State Highways are the highways that connect cities  intra-state.
+They have only 2 lanes."""^^xsd:string ;
+    rdfs:subClassOf lcs:Road .
+
+lcs:Stop a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Sign .
+
+lcs:Taxi a owl:Class ;
+    rdfs:subClassOf lcs:Public_Vehicle .
+
+lcs:Toll_controller a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Tunnel a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Vehicle_Part a owl:Class ;
+    rdfs:subClassOf lcs:Vehicle .
+
+lcs:Yellow a owl:Class ;
+    rdfs:subClassOf lcs:Traffic_Light .
+
+lcs:Ahead_Vehicle_and_Ahead_Safety_Distance a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:Lane_Edges a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:Left_Lane_and_Vehicles a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:Left_Vehicle_and_Left_Safety_Distance a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:Right_Lane_and_Vehicles a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:Right_Vehicle_and_Right_Safety_Distance a owl:Class ;
+    rdfs:subClassOf lcs:Impossible_scenarios .
+
+lcs:action a owl:Class .
+
+lcs:location a owl:Class .
+
+lcs:warning a owl:Class .
+
+lcs:Driver a owl:Class .
+
+lcs:Lane a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:License a owl:Class .
+
+lcs:Process1 a owl:Class ;
+    rdfs:label "LT and LC"^^xsd:string ;
+    rdfs:comment """Lane Tracing and Lane changing block.
+This is a parent block for all the sub processes."""^^xsd:string ;
+    rdfs:subClassOf lcs:Process .
+
+lcs:Process1-3 a owl:Class ;
+    rdfs:label "DMS"^^xsd:string ;
+    rdfs:comment """DMS - Decision Making to Steer
+This system gives a decision to steer the vehicle left or right or not to steer based on the environment and real-time data supproted by NN and Mathematical Model"""^^xsd:string ;
+    rdfs:subClassOf lcs:Process1 .
+
+lcs:Public_Vehicle a owl:Class ;
+    rdfs:subClassOf lcs:Vehicle .
+
+lcs:Road_segment a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Vehicle_type a owl:Class .
+
+lcs:route a owl:Class .
+
+lcs:weather_events a owl:Class .
+
+lcs:Priority_Vehicle a owl:Class ;
+    rdfs:subClassOf lcs:Vehicle .
+
+lcs:Private_Vehicle a owl:Class ;
+    rdfs:subClassOf lcs:Vehicle .
+
+lcs:Process a owl:Class ;
+    owl:disjointWith lcs:Types_of_roads .
+
+lcs:Traffic_Light a owl:Class ;
+    rdfs:subClassOf lcs:Sign .
+
+lcs:route_point a owl:Class .
+
+lcs:Sign a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Function_calls a owl:Class .
+
+lcs:Road a owl:Class ;
+    rdfs:subClassOf lcs:Infrastructure .
+
+lcs:Types_of_roads a owl:Class .
+
+lcs:Impossible_scenarios a owl:Class ;
+    owl:disjointWith lcs:Process .
+
+lcs:Road_markings a owl:Class ;
+    rdfs:subClassOf lcs:Sign .
+
+lcs:Infrastructure a owl:Class .
+
+lcs:Vehicle a owl:Class .
+
+lcs:Traffic_Sign a owl:Class ;
+    rdfs:subClassOf lcs:Sign .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Ambulance lcs:Fire_Truck lcs:Police_Car ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Audible_Line lcs:Dividing_Line lcs:Edge_Line lcs:Gragons_Teeth lcs:Keep_Clear_Pavement lcs:Kerb_Line lcs:Painted_Arrow lcs:Painted_Island ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Bicycle lcs:Car lcs:Motorcycle ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Bicycle_crossing lcs:Bicycles_and_pedestrians_only lcs:Closed_to_pedestrian lcs:No_entry lcs:No_parking lcs:One_way lcs:Only_designated_directions_per lcs:Pedestrian_Crossing lcs:Pedestrians_only lcs:Railway_Crossing lcs:Road_closed lcs:Road_closed_to_all_vehicles lcs:School_Nursery lcs:Slow_down lcs:Speed_Limit lcs:Stop ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Bridge lcs:Gas_Station lcs:Lane lcs:Parking lcs:Road lcs:Road_Intersection lcs:Road_segment lcs:Roundabout lcs:Sign lcs:Toll_controller lcs:Tunnel ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Commercial_Vehicle lcs:Priority_Vehicle lcs:Private_Vehicle lcs:Public_Vehicle lcs:Vehicle_Part ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Driver lcs:Function_calls lcs:Impossible_scenarios lcs:Infrastructure lcs:License lcs:Process lcs:Types_of_roads lcs:Vehicle lcs:Vehicle_type lcs:action lcs:location lcs:route lcs:route_point lcs:warning lcs:weather_events ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Function_calls lcs:Impossible_scenarios lcs:Process lcs:Types_of_roads lcs:Vehicle ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Green lcs:Red lcs:Yellow ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Municipal_Road lcs:National_Expressway lcs:National_Highway lcs:State_Highway ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Process1-1 lcs:Process1-2 lcs:Process1-3 ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( lcs:Road_markings lcs:Traffic_Light lcs:Traffic_Sign ) .
+

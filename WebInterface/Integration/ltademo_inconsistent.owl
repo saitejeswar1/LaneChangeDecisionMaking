@@ -1,0 +1,772 @@
+@prefix : <http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#> .
+@prefix lcs: <http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#> .
+
+<http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#inPar
+lcs:inPar rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#moduleName
+lcs:moduleName rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#outPar
+lcs:outPar rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#can_drive
+lcs:can_drive rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain lcs:License ;
+              rdfs:range lcs:Vehicle_type .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_action
+lcs:has_action rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain lcs:Vehicle ,
+                           lcs:route_point ;
+               rdfs:range lcs:action .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_driver
+lcs:has_driver rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain lcs:Vehicle ;
+               rdfs:range lcs:Driver .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_license
+lcs:has_license rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain lcs:Driver ;
+                rdfs:range lcs:License .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_location
+lcs:has_location rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain lcs:Vehicle ,
+                             lcs:route_point ,
+                             lcs:weather_events ;
+                 rdfs:range lcs:location .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_route
+lcs:has_route rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain lcs:Vehicle ;
+              rdfs:range lcs:route .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_route_point
+lcs:has_route_point rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain lcs:route ;
+                    rdfs:range lcs:route_point .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_vehicle_type
+lcs:has_vehicle_type rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain lcs:Vehicle ;
+                     rdfs:range lcs:Vehicle_type .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#has_warning
+lcs:has_warning rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain lcs:weather_events ;
+                rdfs:range lcs:warning .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#isOnLane
+lcs:isOnLane rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain lcs:Sign ;
+             rdfs:range lcs:Lane .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#isOnRoad
+lcs:isOnRoad rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain lcs:Road_segment ;
+             rdfs:range lcs:Road .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#isOnSegment
+lcs:isOnSegment rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain lcs:Lane ;
+                rdfs:range lcs:Road_segment .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#hasLanes
+lcs:hasLanes rdf:type owl:DatatypeProperty ;
+             rdfs:domain lcs:Types_of_roads ;
+             rdfs:range xsd:positiveInteger .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#hasTruthValue
+lcs:hasTruthValue rdf:type owl:DatatypeProperty ;
+                  rdfs:domain lcs:Impossible_scenarios ;
+                  rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Ahead_Vehicle_and_Ahead_Safety_Distance
+lcs:Ahead_Vehicle_and_Ahead_Safety_Distance rdf:type owl:Class ;
+                                            rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Ambulance
+lcs:Ambulance rdf:type owl:Class ;
+              rdfs:subClassOf lcs:Priority_Vehicle ;
+              owl:disjointWith lcs:Fire_Truck ,
+                               lcs:Police_Car .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Audible_Line
+lcs:Audible_Line rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Bicycle
+lcs:Bicycle rdf:type owl:Class ;
+            rdfs:subClassOf lcs:Private_Vehicle ;
+            owl:disjointWith lcs:Car ,
+                             lcs:Motorcycle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Bicycle_crossing
+lcs:Bicycle_crossing rdf:type owl:Class ;
+                     rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Bicycles_and_pedestrians_only
+lcs:Bicycles_and_pedestrians_only rdf:type owl:Class ;
+                                  rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Bridge
+lcs:Bridge rdf:type owl:Class ;
+           rdfs:subClassOf lcs:Infrastructure ;
+           owl:disjointWith lcs:Gas_Station ,
+                            lcs:Parking ,
+                            lcs:Tunnel .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Bus
+lcs:Bus rdf:type owl:Class ;
+        rdfs:subClassOf lcs:Public_Vehicle ;
+        owl:disjointWith lcs:Taxi .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Car
+lcs:Car rdf:type owl:Class ;
+        rdfs:subClassOf lcs:Private_Vehicle ;
+        owl:disjointWith lcs:Motorcycle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Closed_to_pedestrian
+lcs:Closed_to_pedestrian rdf:type owl:Class ;
+                         rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Commercial_Vehicle
+lcs:Commercial_Vehicle rdf:type owl:Class ;
+                       rdfs:subClassOf lcs:Vehicle ;
+                       owl:disjointWith lcs:Priority_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Dividing_Line
+lcs:Dividing_Line rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Road_markings ;
+                  owl:disjointWith lcs:Edge_Line .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Driver
+lcs:Driver rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Edge_Line
+lcs:Edge_Line rdf:type owl:Class ;
+              rdfs:subClassOf lcs:Road_markings ;
+              owl:disjointWith lcs:Painted_Arrow .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Fire_Truck
+lcs:Fire_Truck rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Priority_Vehicle ;
+               owl:disjointWith lcs:Police_Car .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Function_calls
+lcs:Function_calls rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Gas_Station
+lcs:Gas_Station rdf:type owl:Class ;
+                rdfs:subClassOf lcs:Infrastructure ;
+                owl:disjointWith lcs:Toll_controller ,
+                                 lcs:Tunnel .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Gragons_Teeth
+lcs:Gragons_Teeth rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Green
+lcs:Green rdf:type owl:Class ;
+          rdfs:subClassOf lcs:Traffic_Light ;
+          owl:disjointWith lcs:Red ,
+                           lcs:Yellow .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Impossible_scenarios
+lcs:Impossible_scenarios rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Infrastructure
+lcs:Infrastructure rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Keep_Clear_Pavement
+lcs:Keep_Clear_Pavement rdf:type owl:Class ;
+                        rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Kerb_Line
+lcs:Kerb_Line rdf:type owl:Class ;
+              rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Lane
+lcs:Lane rdf:type owl:Class ;
+         rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Lane_Edges
+lcs:Lane_Edges rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Left_Lane_and_Vehicles
+lcs:Left_Lane_and_Vehicles rdf:type owl:Class ;
+                           rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Left_Vehicle_and_Left_Safety_Distance
+lcs:Left_Vehicle_and_Left_Safety_Distance rdf:type owl:Class ;
+                                          rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#License
+lcs:License rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Motorcycle
+lcs:Motorcycle rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Private_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Municipal_Road
+lcs:Municipal_Road rdf:type owl:Class ;
+                   rdfs:subClassOf lcs:Road ;
+                   rdfs:comment "Its a urban road. Usually present in small cities and towns." .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#National_Expressway
+lcs:National_Expressway rdf:type owl:Class ;
+                        rdfs:subClassOf lcs:Road ;
+                        rdfs:comment """Express way is a type of highway that is used more frequently between metropolitan cities. These are highest class of all the highways.
+Generally they have 4-6 lanes for most distances.""" .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#National_Highway
+lcs:National_Highway rdf:type owl:Class ;
+                     rdfs:subClassOf lcs:Road .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#No_entry
+lcs:No_entry rdf:type owl:Class ;
+             rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#No_parking
+lcs:No_parking rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#One_way
+lcs:One_way rdf:type owl:Class ;
+            rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Only_designated_directions_per
+lcs:Only_designated_directions_per rdf:type owl:Class ;
+                                   rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Painted_Arrow
+lcs:Painted_Arrow rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Painted_Island
+lcs:Painted_Island rdf:type owl:Class ;
+                   rdfs:subClassOf lcs:Road_markings .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Parking
+lcs:Parking rdf:type owl:Class ;
+            rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Pedestrian_Crossing
+lcs:Pedestrian_Crossing rdf:type owl:Class ;
+                        rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Pedestrians_only
+lcs:Pedestrians_only rdf:type owl:Class ;
+                     rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Police_Car
+lcs:Police_Car rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Priority_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Priority_Vehicle
+lcs:Priority_Vehicle rdf:type owl:Class ;
+                     rdfs:subClassOf lcs:Vehicle ;
+                     owl:disjointWith lcs:Private_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Private_Vehicle
+lcs:Private_Vehicle rdf:type owl:Class ;
+                    rdfs:subClassOf lcs:Vehicle ;
+                    owl:disjointWith lcs:Public_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process
+lcs:Process rdf:type owl:Class ;
+            owl:disjointWith lcs:Types_of_roads .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1
+lcs:Process1 rdf:type owl:Class ;
+             rdfs:subClassOf lcs:Process ;
+             rdfs:comment """Lane Tracing and Lane changing block.
+This is a parent block for all the sub processes."""^^xsd:string ;
+             rdfs:label "LT and LC"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1-1
+lcs:Process1-1 rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Process1 ;
+               rdfs:comment """LT - Lane Tracing
+This detects the lanes on the road and traces them on the image for the system to identify the lane boundaries."""^^xsd:string ;
+               rdfs:label "LT"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1-2
+lcs:Process1-2 rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Process1 ;
+               rdfs:comment """PP - Predicting Possibilities
+This block reads the environment and predicts the possibilities of the system to perform the action of Lane changing safely."""^^xsd:string ;
+               rdfs:label "PP"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1-3
+lcs:Process1-3 rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Process1 ;
+               rdfs:comment """DMS - Decision Making to Steer
+This system gives a decision to steer the vehicle left or right or not to steer based on the environment and real-time data supproted by NN and Mathematical Model"""^^xsd:string ;
+               rdfs:label "DMS"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1-3-1
+lcs:Process1-3-1 rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Process1-3 ;
+                 owl:disjointWith lcs:Process1-3-2 ;
+                 rdfs:comment """LC - Lane changing
+This block makes use of motion planning algorithms to decide the path and the target lane for the ego vehicle."""^^xsd:string ;
+                 rdfs:label "LC"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Process1-3-2
+lcs:Process1-3-2 rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Process1-3 ;
+                 rdfs:comment """DDS - Deciding the direction to steer
+This is a subsystem of DMS that performs the part function of chossing the direction of steer or the yaw angle."""^^xsd:string ;
+                 rdfs:label "DDS"^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Public_Vehicle
+lcs:Public_Vehicle rdf:type owl:Class ;
+                   rdfs:subClassOf lcs:Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Railway_Crossing
+lcs:Railway_Crossing rdf:type owl:Class ;
+                     rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Red
+lcs:Red rdf:type owl:Class ;
+        rdfs:subClassOf lcs:Traffic_Light ;
+        owl:disjointWith lcs:Yellow .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Right_Lane_and_Vehicles
+lcs:Right_Lane_and_Vehicles rdf:type owl:Class ;
+                            rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Right_Vehicle_and_Right_Safety_Distance
+lcs:Right_Vehicle_and_Right_Safety_Distance rdf:type owl:Class ;
+                                            rdfs:subClassOf lcs:Impossible_scenarios .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road
+lcs:Road rdf:type owl:Class ;
+         rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road_Intersection
+lcs:Road_Intersection rdf:type owl:Class ;
+                      rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road_closed
+lcs:Road_closed rdf:type owl:Class ;
+                rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road_closed_to_all_vehicles
+lcs:Road_closed_to_all_vehicles rdf:type owl:Class ;
+                                rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road_markings
+lcs:Road_markings rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Road_segment
+lcs:Road_segment rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Roundabout
+lcs:Roundabout rdf:type owl:Class ;
+               rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#School_Nursery
+lcs:School_Nursery rdf:type owl:Class ;
+                   rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Sign
+lcs:Sign rdf:type owl:Class ;
+         rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Slow_down
+lcs:Slow_down rdf:type owl:Class ;
+              rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Speed_Limit
+lcs:Speed_Limit rdf:type owl:Class ;
+                rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#State_Highway
+lcs:State_Highway rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Road .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Stop
+lcs:Stop rdf:type owl:Class ;
+         rdfs:subClassOf lcs:Traffic_Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Taxi
+lcs:Taxi rdf:type owl:Class ;
+         rdfs:subClassOf lcs:Public_Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Toll_controller
+lcs:Toll_controller rdf:type owl:Class ;
+                    rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Traffic_Light
+lcs:Traffic_Light rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Traffic_Sign
+lcs:Traffic_Sign rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Sign .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Tunnel
+lcs:Tunnel rdf:type owl:Class ;
+           rdfs:subClassOf lcs:Infrastructure .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Types_of_roads
+lcs:Types_of_roads rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Vehicle
+lcs:Vehicle rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Vehicle_Part
+lcs:Vehicle_Part rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Vehicle .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Vehicle_type
+lcs:Vehicle_type rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Yellow
+lcs:Yellow rdf:type owl:Class ;
+           rdfs:subClassOf lcs:Traffic_Light .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#action
+lcs:action rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#final_result
+lcs:final_result rdf:type owl:Class ;
+                 rdfs:subClassOf lcs:Function_calls ;
+                 lcs:inPar "seg_vals,count" ;
+                 lcs:moduleName "demo" ;
+                 lcs:outPar "msg" ;
+                 rdfs:label "final_result" .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#lane_counting
+lcs:lane_counting rdf:type owl:Class ;
+                  rdfs:subClassOf lcs:Function_calls ;
+                  lcs:inPar "cur_lane,rt_turn,lt_turn" ;
+                  lcs:moduleName "query" ;
+                  lcs:outPar "cur_lane" ;
+                  rdfs:label "lane_counting" .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#location
+lcs:location rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#m_model
+lcs:m_model rdf:type owl:Class ;
+            rdfs:subClassOf lcs:Function_calls ;
+            lcs:inPar "seg_vals" ;
+            lcs:moduleName "mm" ;
+            lcs:outPar "lane_info,r_depth,l_depth,a_depth" ;
+            rdfs:label "m_model" .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#route
+lcs:route rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#route_point
+lcs:route_point rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#set_vars
+lcs:set_vars rdf:type owl:Class ;
+             rdfs:subClassOf lcs:Function_calls ;
+             lcs:inPar "lane_info,r_depth,l_depth,a_depth" ;
+             lcs:moduleName "mm" ;
+             lcs:outPar "lt_sd,lt_veh,rt_sd,rt_veh,a_sd,ah_veh" ;
+             rdfs:label "set_vars" .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#warning
+lcs:warning rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#weather_events
+lcs:weather_events rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Ahead_Safety_Distance
+lcs:Ahead_Safety_Distance rdf:type owl:NamedIndividual ,
+                                   lcs:Ahead_Vehicle_and_Ahead_Safety_Distance ;
+                          lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Ahead_Vehicle
+lcs:Ahead_Vehicle rdf:type owl:NamedIndividual ,
+                           lcs:Ahead_Vehicle_and_Ahead_Safety_Distance ;
+                  lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Express_way
+lcs:Express_way rdf:type owl:NamedIndividual ,
+                         lcs:Types_of_roads ;
+                lcs:hasLanes 6 ;
+                rdfs:comment """Express way is a type of highway that is used more frequently between metropolitan cities. These are highest class of all the highways.
+Generally they have 4-6 lanes for most distances."""^^xsd:string .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Left_Lane_Edge
+lcs:Left_Lane_Edge rdf:type owl:NamedIndividual ,
+                            lcs:Lane_Edges ,
+                            lcs:Left_Lane_and_Vehicles ;
+                   lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Left_Safety_Distance
+lcs:Left_Safety_Distance rdf:type owl:NamedIndividual ,
+                                  lcs:Left_Vehicle_and_Left_Safety_Distance ;
+                         lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Left_Vehicle
+lcs:Left_Vehicle rdf:type owl:NamedIndividual ,
+                          lcs:Left_Lane_and_Vehicles ,
+                          lcs:Left_Vehicle_and_Left_Safety_Distance ;
+                 lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#National_Highway
+lcs:National_Highway rdf:type owl:NamedIndividual ,
+                              lcs:Types_of_roads ;
+                     lcs:hasLanes 4 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Right_Lane_Edge
+lcs:Right_Lane_Edge rdf:type owl:NamedIndividual ,
+                             lcs:Lane_Edges ,
+                             lcs:Right_Lane_and_Vehicles ;
+                    lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Right_Safety_Distance
+lcs:Right_Safety_Distance rdf:type owl:NamedIndividual ,
+                                   lcs:Right_Vehicle_and_Right_Safety_Distance ;
+                          lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#Right_Vehicle
+lcs:Right_Vehicle rdf:type owl:NamedIndividual ,
+                           lcs:Right_Lane_and_Vehicles ,
+                           lcs:Right_Vehicle_and_Right_Safety_Distance ;
+                  lcs:hasTruthValue 1 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#State_Highway
+lcs:State_Highway rdf:type owl:NamedIndividual ,
+                           lcs:Types_of_roads ;
+                  lcs:hasLanes 2 .
+
+
+###  http://www.semanticweb.org/saitejeswar/ontologies/2021/2/untitled-ontology-2#ambulance
+lcs:ambulance rdf:type owl:NamedIndividual ,
+                       lcs:Priority_Vehicle ,
+                       lcs:Private_Vehicle .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+lcs:National_Highway rdfs:comment """National highways are long roads that are present throughout the country connecting all the important areas of every state.
+Generally they have 2-4 lanes."""^^xsd:string .
+
+
+lcs:State_Highway rdfs:comment """State Highways are the highways that connect cities  intra-state.
+They have only 2 lanes."""^^xsd:string .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( lcs:Bicycle_crossing
+                lcs:Bicycles_and_pedestrians_only
+                lcs:Closed_to_pedestrian
+                lcs:No_entry
+                lcs:No_parking
+                lcs:One_way
+                lcs:Only_designated_directions_per
+                lcs:Pedestrian_Crossing
+                lcs:Pedestrians_only
+                lcs:Railway_Crossing
+                lcs:Road_closed
+                lcs:Road_closed_to_all_vehicles
+                lcs:School_Nursery
+                lcs:Slow_down
+                lcs:Speed_Limit
+                lcs:Stop
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( lcs:Municipal_Road
+                lcs:National_Expressway
+                lcs:National_Highway
+                lcs:State_Highway
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( lcs:Process1-1
+                lcs:Process1-2
+                lcs:Process1-3
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( lcs:Road_markings
+                lcs:Traffic_Light
+                lcs:Traffic_Sign
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
