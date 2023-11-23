@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    
+</head>
+<body>
+    <form class="input_details" action="results" method="POST">
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput1" class="form-label">Lanes Decreasing</label>
+            <input type="number" name="ip1" class="form-control" id="formGroupExampleInput1" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput2" class="form-label">Lanes Increasing</label>
+            <input type="number" name="ip2" class="form-control" id="formGroupExampleInput2" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput3" class="form-label">Left Safety Distance</label>
+            <input type="number" name="ip3" class="form-control" id="formGroupExampleInput3" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput4" class="form-label">Vehicle Left Ahead</label>
+            <input type="number" name="ip4" class="form-control" id="formGroupExampleInput4" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput5" class="form-label">Right Safety Distance</label>
+            <input type="number" name="ip5" class="form-control" id="formGroupExampleInput5" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput6" class="form-label">Vehicle Right Ahead</label>
+            <input type="number" name="ip6" class="form-control" id="formGroupExampleInput6" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput7" class="form-label">Ahead Safety Distance</label>
+            <input type="number" name="ip7" class="form-control" id="formGroupExampleInput7" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput8" class="form-label">Vehicle Ahead</label>
+            <input type="number" name="ip8" class="form-control" id="formGroupExampleInput8" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput9" class="form-label">Left Lane Edge</label>
+            <input type="number" name="ip9" class="form-control" id="formGroupExampleInput9" placeholder="Enter 0 or 1">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="formGroupExampleInput10" class="form-label">Right Lane Edge</label>
+            <input type="number" name="ip10" class="form-control" id="formGroupExampleInput10" placeholder="Enter 0 or 1">
+        </div>
+        <button class="btn btn-primary" type="submit">Get Results</button>
+        <div class="textbox"></div>
+    </form>
+
+</body>
+</html>
